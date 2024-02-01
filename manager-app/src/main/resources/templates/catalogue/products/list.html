@@ -7,6 +7,11 @@
 <body>
 <a data-th-href="@{/catalogue/products/create}">+ Создать товар</a>
 <h1>Список товаров</h1>
+<form method="get" data-th-action="@{/catalogue/products/list}">
+    <label>Фильтр:<input type="text" name="filter" data-th-value="${filter}">
+        <button type="submit">Поиск</button>
+    </label>
+</form>
 <table>
     <thead>
     <tr>
