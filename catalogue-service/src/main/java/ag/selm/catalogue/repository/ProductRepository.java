@@ -1,6 +1,6 @@
-package ag.selm.manager.repository;
+package ag.selm.catalogue.repository;
 
-import ag.selm.manager.entity.Product;
+import ag.selm.catalogue.entity.Product;
 
 import java.util.List;
 import java.util.Optional;

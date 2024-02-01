@@ -1,7 +1,7 @@
-package ag.selm.manager.service;
+package ag.selm.catalogue.service;
 
-import ag.selm.manager.entity.Product;
-import ag.selm.manager.repository.ProductRepository;
+import ag.selm.catalogue.entity.Product;
+import ag.selm.catalogue.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
