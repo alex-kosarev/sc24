@@ -1,10 +1,4 @@
 spring:
-  security:
-    user:
-      name: catalogue_service_user
-      password: '{noop}password'
-      roles:
-        - SERVICE
   datasource:
     url: jdbc:postgresql://localhost:5432/catalogue
     username: catalogue
@@ -15,6 +9,11 @@ spring:
       - catalogue
   jpa:
     show-sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8082/realms/selmag
 server:
   port: 8081
 logging:
