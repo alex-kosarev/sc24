@@ -11,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.security.Principal;
 import java.util.Map;
 
 @RestController
@@ -22,8 +21,7 @@ public class ProductsRestController {
     private final ProductService productService;
 
     @GetMapping
-    public Iterable<Product> findProducts(@RequestParam(name = "filter", required = false) String filter,
-                                          Principal principal) {
+    public Iterable<Product> findProducts(@RequestParam(name = "filter", required = false) String filter) {
         return this.productService.findAllProducts(filter);
     }
 
