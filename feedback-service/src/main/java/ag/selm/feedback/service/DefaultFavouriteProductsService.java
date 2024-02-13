@@ -1,7 +1,7 @@
-package ag.selm.customer.service;
+package ag.selm.feedback.service;
 
-import ag.selm.customer.entity.FavouriteProduct;
-import ag.selm.customer.repository.FavouriteProductRepository;
+import ag.selm.feedback.entity.FavouriteProduct;
+import ag.selm.feedback.repository.FavouriteProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;

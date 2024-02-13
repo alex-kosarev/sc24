@@ -1,6 +1,6 @@
-package ag.selm.customer.service;
+package ag.selm.feedback.service;
 
-import ag.selm.customer.entity.FavouriteProduct;
+import ag.selm.feedback.entity.FavouriteProduct;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
