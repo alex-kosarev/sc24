@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Наши товары &ndash; Сельмаг</title>
+</head>
+<body>
+<a data-th-href="@{/customer/products/favourites}">Избранные товары</a>
+<h1>Наши товары</h1>
+<form>
+    <label>Фильтр: <input type="text" name="filter" data-th-value="${filter}"> <button type="submit">Поиск</button></label>
+</form>
+<ul>
+    <li data-th-each="product : ${products}">
+        <strong>
+            <a data-th-text="${product.title}"
+               data-th-href="@{/customer/products/{productId}(productId=${product.id})}"></a>
+        </strong>
+        <p data-th-text="${product.details}"></p>
+    </li>
+</ul>
+</body>
+</html>
