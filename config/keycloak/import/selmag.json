@@ -263,6 +263,7 @@
       "manager-app" : [ ],
       "security-admin-console" : [ ],
       "admin-cli" : [ ],
+      "customer-app" : [ ],
       "account-console" : [ ],
       "broker" : [ {
         "id" : "c6bc6617-0df3-4448-8870-9785c4b40145",
@@ -448,6 +449,20 @@
     "notBefore" : 0,
     "groups" : [ "/Managers" ]
   }, {
+    "id" : "2699c1b0-b72e-49df-a24f-78d5793cc300",
+    "createdTimestamp" : 1707816401280,
+    "username" : "service-account-customer-app",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "customer-app",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-selmag" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
     "id" : "0914c623-321b-42ac-abac-59e30b0bd29c",
     "createdTimestamp" : 1706872120135,
     "username" : "service-account-manager-app",
@@ -593,6 +608,86 @@
     "nodeReRegistrationTimeout" : 0,
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
     "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
+  }, {
+    "id" : "ce83f995-8fc2-4e3d-810a-cb61da512233",
+    "clientId" : "customer-app",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "http://localhost:8083",
+    "adminUrl" : "http://localhost:8083",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "secret" : "M1bhGCByxWDqVWeokJj6Z9sMGTI41lNc",
+    "redirectUris" : [ "/*" ],
+    "webOrigins" : [ ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : true,
+    "publicClient" : false,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "client.secret.creation.time" : "1707816401",
+      "backchannel.logout.session.required" : "true",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "protocolMappers" : [ {
+      "id" : "13cb5593-8c24-482e-a8c0-92b7be79ed0b",
+      "name" : "Client ID",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "client_id",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "client_id",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "fe717864-ebb7-4a4e-b8d5-74c67511ae8a",
+      "name" : "Client Host",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientHost",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientHost",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "a3df17bb-b75a-4e6c-b4d2-9f3131621492",
+      "name" : "Client IP Address",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientAddress",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientAddress",
+        "jsonType.label" : "String"
+      }
+    } ],
+    "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
+    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "offline_access", "view_catalogue", "microprofile-jwt" ]
   }, {
     "id" : "fb7be8db-cc4c-4a5b-88b5-04e36434a719",
     "clientId" : "manager-app",

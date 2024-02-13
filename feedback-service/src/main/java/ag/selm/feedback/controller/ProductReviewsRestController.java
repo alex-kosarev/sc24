@@ -6,6 +6,7 @@ import ag.selm.feedback.service.ProductReviewsService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import reactor.core.publisher.Flux;
@@ -25,11 +26,12 @@ public class ProductReviewsRestController {
 
     @PostMapping
     public Mono<ResponseEntity<ProductReview>> createProductReview(
+            Mono<JwtAuthenticationToken> authenticationTokenMono,
             @Valid @RequestBody Mono<NewProductReviewPayload> payloadMono,
             UriComponentsBuilder uriComponentsBuilder) {
-        return payloadMono
+        return authenticationTokenMono.flatMap(token -> payloadMono
                 .flatMap(payload -> this.productReviewsService.createProductReview(payload.productId(),
-                        payload.rating(), payload.review()))
+                        payload.rating(), payload.review(), token.getToken().getSubject())))
                 .map(productReview -> ResponseEntity
                         .created(uriComponentsBuilder.replacePath("/feedback-api/product-reviews/{id}")
                                 .build(productReview.getId()))
