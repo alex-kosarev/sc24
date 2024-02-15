@@ -14,7 +14,10 @@ public class WebClientProductsClient implements ProductsClient {
 
     @Override
     public Flux<Product> findAllProducts(String filter) {
-        return this.webClient.get()
+        return this.webClient
+                .mutate()
+                .build()
+                .get()
                 .uri("/catalogue-api/products?filter={filter}", filter)
                 .retrieve()
                 .bodyToFlux(Product.class);
