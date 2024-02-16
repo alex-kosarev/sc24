@@ -4,6 +4,14 @@ selmag:
       uri: http://localhost:8081
       registration-id: keycloak
 spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8085
+        instance:
+          name: manager-app
+          service-host-type: ip
+        enabled: true
   datasource:
     url: jdbc:postgresql://localhost:5433/manager
     username: manager
@@ -24,3 +32,23 @@ spring:
               - view_catalogue
               - edit_catalogue
               - microprofile-jwt
+          metrics:
+            provider: keycloak
+            client-id: manager-app-metrics-client
+            client-secret: QddTu2SVo3TxukQ1lJSbe8fFt6hJ1wUq
+            authorization-grant-type: client_credentials
+            scope:
+              - metrics_server
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8082/realms/selmag
+management:
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
