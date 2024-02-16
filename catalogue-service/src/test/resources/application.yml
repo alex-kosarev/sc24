@@ -3,3 +3,7 @@ spring:
     url: jdbc:tc:postgresql:16:///selmag?TC_DAEMON=true
     username: selmag
     password: selmag
+  boot:
+    admin:
+      client:
+        enabled: false

@@ -1,3 +1,8 @@
+spring:
+  boot:
+    admin:
+      client:
+        enabled: false
 selmag:
   services:
     catalogue:
