@@ -6,6 +6,7 @@ import ag.selm.customer.client.WebClientProductsClient;
 import de.codecentric.boot.admin.client.config.ClientProperties;
 import de.codecentric.boot.admin.client.registration.ReactiveRegistrationClient;
 import de.codecentric.boot.admin.client.registration.RegistrationClient;
+import io.micrometer.observation.ObservationRegistry;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,7 @@ import org.springframework.security.oauth2.client.ReactiveOAuth2AuthorizedClient
 import org.springframework.security.oauth2.client.registration.ReactiveClientRegistrationRepository;
 import org.springframework.security.oauth2.client.web.reactive.function.client.ServerOAuth2AuthorizedClientExchangeFilterFunction;
 import org.springframework.security.oauth2.client.web.server.ServerOAuth2AuthorizedClientRepository;
+import org.springframework.web.reactive.function.client.DefaultClientRequestObservationConvention;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
@@ -25,13 +27,16 @@ public class ClientConfig {
     @Scope("prototype")
     public WebClient.Builder selmagServicesWebClientBuilder(
             ReactiveClientRegistrationRepository clientRegistrationRepository,
-            ServerOAuth2AuthorizedClientRepository authorizedClientRepository
+            ServerOAuth2AuthorizedClientRepository authorizedClientRepository,
+            ObservationRegistry observationRegistry
     ) {
         ServerOAuth2AuthorizedClientExchangeFilterFunction filter =
                 new ServerOAuth2AuthorizedClientExchangeFilterFunction(clientRegistrationRepository,
                         authorizedClientRepository);
         filter.setDefaultClientRegistrationId("keycloak");
         return WebClient.builder()
+                .observationRegistry(observationRegistry)
+                .observationConvention(new DefaultClientRequestObservationConvention())
                 .filter(filter);
     }
 

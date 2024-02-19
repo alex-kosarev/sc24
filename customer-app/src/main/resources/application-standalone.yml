@@ -7,6 +7,8 @@ selmag:
 server:
   port: 8083
 spring:
+  application:
+    name: selmag-customer-app
   boot:
     admin:
       client:
@@ -50,3 +52,9 @@ management:
     web:
       exposure:
         include: '*'
+  zipkin:
+    tracing:
+      endpoint: http://172.17.0.1:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
