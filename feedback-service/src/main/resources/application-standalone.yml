@@ -22,11 +22,18 @@ spring:
       client:
         registration:
           keycloak:
-            client-id: feedback-service-metrics-client
+            client-id: feedback-service
             client-secret: 4cD79sTpV318BqiIWWUYsfjywdzg4DeK
             authorization-grant-type: client_credentials
             scope:
               - metrics_server
+          discovery:
+            provider: keycloak
+            client-id: feedback-service
+            client-secret: 4cD79sTpV318BqiIWWUYsfjywdzg4DeK
+            authorization-grant-type: client_credentials
+            scope:
+              - discovery
         provider:
           keycloak:
             issuer-uri: http://172.17.0.1:8082/realms/selmag
@@ -53,3 +60,6 @@ management:
   tracing:
     sampling:
       probability: 1.0
+eureka:
+  client:
+    enabled: false

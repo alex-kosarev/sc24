@@ -10,6 +10,7 @@ spring:
         provider:
           keycloak:
             issuer-uri: http://172.17.0.1:8082/realms/selmag
+            user-name-attribute: preferred_username
         registration:
           keycloak:
             authorization-grant-type: client_credentials
@@ -31,3 +32,6 @@ management:
         include:
           - health
           - prometheus
+eureka:
+  client:
+    enabled: false

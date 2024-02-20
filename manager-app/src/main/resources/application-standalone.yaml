@@ -36,8 +36,8 @@ spring:
               - microprofile-jwt
           metrics:
             provider: keycloak
-            client-id: manager-app-metrics-client
-            client-secret: QddTu2SVo3TxukQ1lJSbe8fFt6hJ1wUq
+            client-id: manager-app
+            client-secret: JwByKV4Y8m95GDYTNqJH6jfaj5dXpv8F
             authorization-grant-type: client_credentials
             scope:
               - metrics_server
@@ -60,3 +60,6 @@ management:
   tracing:
     sampling:
       probability: 1.0
+eureka:
+  client:
+    enabled: false

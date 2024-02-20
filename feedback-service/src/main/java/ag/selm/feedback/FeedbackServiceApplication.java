@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.security.OAuthScope;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SecurityScheme(
         name = "keycloak",
@@ -23,6 +24,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         )
 )
 @SpringBootApplication
+@EnableDiscoveryClient
 public class FeedbackServiceApplication {
 
     public static void main(String[] args) {
