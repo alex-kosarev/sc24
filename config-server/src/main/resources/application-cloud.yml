@@ -1,0 +1,14 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: selmag-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/alex-kosarev/sc24-confg.git
+          clone-on-start: true
+          default-label: master
+          search-paths:
+            - '{application}/{profile}'
