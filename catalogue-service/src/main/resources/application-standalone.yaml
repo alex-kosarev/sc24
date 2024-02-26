@@ -11,6 +11,9 @@ spring:
           name: catalogue-service
           service-host-type: ip
         enabled: true
+  cloud:
+    config:
+      enabled: false
   datasource:
     url: jdbc:postgresql://localhost:5432/catalogue
     username: catalogue

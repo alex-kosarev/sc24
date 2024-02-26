@@ -1,15 +1,8 @@
-server:
-  port: 8084
 spring:
-  application:
-    name: selmag-feedback-service
   boot:
     admin:
       client:
         enabled: false
-  cloud:
-    config:
-      enabled: false
   data:
     mongodb:
       uri: mongodb://localhost:27017/feedback
@@ -42,7 +35,7 @@ springdoc:
       client-id: feedback-service-swagger-ui
       use-pkce-with-authorization-code-grant: true
 keycloak:
-  uri: http://localhost:8082
+  uri: http://172.17.0.1:8082
 management:
   health:
     livenessstate:

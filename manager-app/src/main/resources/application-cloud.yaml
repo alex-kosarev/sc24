@@ -10,6 +10,9 @@ spring:
     admin:
       client:
         enabled: false
+  cloud:
+    config:
+      enabled: false
   datasource:
     url: jdbc:postgresql://localhost:5433/manager
     username: manager

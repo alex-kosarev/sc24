@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: selmag-manager-app
+  config:
+    import: 'optional:configserver:'
+  cloud:
+    config:
+      uri: http://config:config-password@localhost:8888

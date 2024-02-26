@@ -1,9 +1,4 @@
-server:
-  port: 8085
 spring:
-  cloud:
-    config:
-      enabled: false
   security:
     oauth2:
       resourceserver:
@@ -28,6 +23,13 @@ spring:
               - openid
             client-id: admin-service
             client-secret: 4mR9OIt3qadt22Dbbr5KC01lsRQ0qVcg
+          discovery:
+            provider: keycloak
+            client-id: admin-service
+            client-secret: 4mR9OIt3qadt22Dbbr5KC01lsRQ0qVcg
+            authorization-grant-type: client_credentials
+            scope:
+              - discovery
 management:
   endpoints:
     web:
@@ -36,5 +38,9 @@ management:
           - health
           - prometheus
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
-    enabled: false
+    service-url:
+      defaultZone: http://172.17.0.1:8761/eureka/
+    register-with-eureka: false

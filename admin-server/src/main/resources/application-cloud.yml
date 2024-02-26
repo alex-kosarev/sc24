@@ -1,6 +1,9 @@
 server:
   port: 8085
 spring:
+  cloud:
+    config:
+      enabled: false
   security:
     oauth2:
       resourceserver:

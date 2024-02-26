@@ -14,6 +14,9 @@ spring:
           name: manager-app
           service-host-type: ip
         enabled: true
+  cloud:
+    config:
+      enabled: false
   datasource:
     url: jdbc:postgresql://localhost:5433/manager
     username: manager

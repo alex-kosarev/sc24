@@ -17,6 +17,9 @@ spring:
           name: customer-app
           service-host-type: ip
         enabled: true
+  cloud:
+    config:
+      enabled: false
   security:
     oauth2:
       client:

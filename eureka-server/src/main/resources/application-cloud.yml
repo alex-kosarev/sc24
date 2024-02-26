@@ -9,6 +9,9 @@ eureka:
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 spring:
+  cloud:
+    config:
+      enabled: false
   security:
     oauth2:
       client:

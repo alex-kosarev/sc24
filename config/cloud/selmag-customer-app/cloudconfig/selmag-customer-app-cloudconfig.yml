@@ -4,18 +4,11 @@ selmag:
       uri: lb://selmag-catalogue-service
     feedback:
       uri: lb://selmag-feedback-service
-server:
-  port: 8083
 spring:
-  application:
-    name: selmag-customer-app
   boot:
     admin:
       client:
         enabled: false
-  cloud:
-    config:
-      enabled: false
   security:
     oauth2:
       client:

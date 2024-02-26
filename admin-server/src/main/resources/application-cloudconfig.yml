@@ -1,0 +1,10 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: selmag-admin-server
+  config:
+    import: 'optional:configserver:'
+  cloud:
+    config:
+      uri: http://config:config-password@localhost:8888
