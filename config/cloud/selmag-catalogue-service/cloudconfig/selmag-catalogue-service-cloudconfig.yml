@@ -4,7 +4,7 @@ spring:
       client:
         enabled: false
   datasource:
-    url: jdbc:postgresql://localhost:5432/catalogue
+    url: jdbc:postgresql://172.17.0.1:5432/catalogue
     username: catalogue
     password: catalogue
   flyway:
@@ -64,9 +64,9 @@ management:
       probability: 1.0
 eureka:
   instance:
+    prefer-ip-address: true
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 1
-    hostname: 172.17.0.1
   client:
     registryFetchIntervalSeconds: 1
     service-url:

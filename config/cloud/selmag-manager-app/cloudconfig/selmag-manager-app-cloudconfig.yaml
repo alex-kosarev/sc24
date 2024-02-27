@@ -8,10 +8,6 @@ spring:
     admin:
       client:
         enabled: false
-  datasource:
-    url: jdbc:postgresql://localhost:5433/manager
-    username: manager
-    password: manager
   security:
     oauth2:
       client:
@@ -65,7 +61,7 @@ eureka:
   instance:
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 1
-    hostname: 172.17.0.1
+    prefer-ip-address: true
   client:
     registryFetchIntervalSeconds: 1
     service-url:

@@ -45,6 +45,8 @@ spring:
         instance:
           name: api-gateway
           service-host-type: ip
+          service-base-url: http://172.17.0.1:8086
+          management-base-url: http://172.17.0.1:8086
         enabled: true
 management:
   health:
