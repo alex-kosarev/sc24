@@ -1,0 +1,60 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: catalogue-service-route
+          uri: lb://selmag-catalogue-service
+          predicates:
+            - Host=catalogue.api.selm.ag.172.17.0.1.nip.io
+        - id: feedback-service-route
+          uri: lb://selmag-feedback-service
+          predicates:
+            - Host=feedback.api.selm.ag.172.17.0.1.nip.io
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://172.17.0.1:8082/realms/selmag
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://172.17.0.1:8082/realms/selmag
+        registration:
+          discovery:
+            provider: keycloak
+            client-id: api-gateway
+            client-secret: kaKBJ6Pc9mPldygbbI5SgWkZWo1ewk5y
+            authorization-grant-type: client_credentials
+            scope:
+              - discovery
+  application:
+    name: selmag-api-gateway
+  boot:
+    admin:
+      client:
+        enabled: false
+management:
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  zipkin:
+    tracing:
+      endpoint: http://172.17.0.1:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 1
+    hostname: 172.17.0.1
+  client:
+    service-url:
+      defaultZone: http://172.17.0.1:8761/eureka/
+    registryFetchIntervalSeconds: 1

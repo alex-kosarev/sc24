@@ -20,6 +20,7 @@ spring:
           keycloak:
             client-id: customer-app
             client-secret: M1bhGCByxWDqVWeokJj6Z9sMGTI41lNc
+            client-name: Selmag Keycloak
             authorization-grant-type: authorization_code
             scope:
               - openid
@@ -59,7 +60,10 @@ management:
       probability: 1.0
 eureka:
   instance:
-    prefer-ip-address: true
+    hostname: 172.17.0.1
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 1
   client:
+    registryFetchIntervalSeconds: 1
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://172.17.0.1:8761/eureka/

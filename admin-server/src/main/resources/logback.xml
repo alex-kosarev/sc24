@@ -10,7 +10,7 @@
                 <http>
                     <url>${LOKI}/loki/api/v1/push</url>
                 </http>
-                <format class="">
+                <format>
                     <label>
                         <pattern>app=selmag-admin-service,host=${HOSTNAME},level=%level</pattern>
                     </label>

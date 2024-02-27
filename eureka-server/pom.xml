@@ -9,7 +9,6 @@
         <version>24.1.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>pro.akosarev.sandbox</groupId>
     <artifactId>eureka-server</artifactId>
 
     <properties>

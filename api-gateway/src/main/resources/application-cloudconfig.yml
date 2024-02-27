@@ -1,9 +1,9 @@
 server:
-  port: 8084
+  port: 8086
   forward-headers-strategy: framework
 spring:
   application:
-    name: selmag-feedback-service
+    name: selmag-api-gateway
   config:
     import: 'optional:configserver:'
   cloud:
