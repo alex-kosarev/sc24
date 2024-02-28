@@ -52,7 +52,7 @@ springdoc:
       client-id: catalogue-service-swagger-ui
       use-pkce-with-authorization-code-grant: true
 keycloak:
-  uri: http://localhost:8082
+  uri: http://172.17.0.1:8082
 management:
   health:
     livenessstate:

@@ -4,7 +4,7 @@ spring:
       client:
         enabled: false
   datasource:
-    url: jdbc:postgresql://172.17.0.1:5432/catalogue
+    url: jdbc:postgresql://catalogue-db:5432/catalogue
     username: catalogue
     password: catalogue
   flyway:
@@ -45,7 +45,7 @@ springdoc:
       client-id: catalogue-service-swagger-ui
       use-pkce-with-authorization-code-grant: true
 keycloak:
-  uri: http://localhost:8082
+  uri: http://172.17.0.1:8082
 management:
   health:
     livenessstate:

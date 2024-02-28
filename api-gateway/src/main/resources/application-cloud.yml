@@ -37,9 +37,9 @@ spring:
         enabled: false
 management:
   health:
-    livenessstate:
+    livenessState:
       enabled: true
-    readinessstate:
+    readinessState:
       enabled: true
   endpoints:
     web:

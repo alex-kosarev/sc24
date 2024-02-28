@@ -1,0 +1,155 @@
+name: selmag
+services:
+  # Инфраструктура
+  keycloak:
+    image: quay.io/keycloak/keycloak:23.0.7
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    volumes:
+      - './config/keycloak/import:/opt/keycloak/data/import'
+    ports:
+      - '8082:8080'
+    command: start-dev --import-realm
+  tempo:
+    image: grafana/tempo:2.3.1
+    command: -config.file=/etc/tempo.yaml
+    volumes:
+      - './config/tempo/tempo.yaml:/etc/tempo.yaml'
+    ports:
+      - '3200:3200'
+      - '9095:9095'
+      - '4317:4317'
+      - '4318:4318'
+      - '9411:9411'
+      - '14268:14268'
+  loki:
+    image: grafana/loki:2.9.4
+    ports:
+      - '3100:3100'
+  grafana:
+    image: grafana/grafana:10.2.4
+    ports:
+      - '3000:3000'
+    volumes:
+      - './data/grafana:/var/lib/grafana'
+    user: '1000'
+  victoria-metrics:
+    image: victoriametrics/victoria-metrics:v1.93.12
+    command: -promscrape.config=/promscrape.yaml
+    volumes:
+      - './config/victoria-metrics/promscrape_docker_compose.yaml:/promscrape.yaml'
+    ports:
+      - '8428:8428'
+  catalogue-db:
+    image: postgres:16
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: catalogue
+      POSTGRES_PASSWORD: catalogue
+      POSTGRES_DB: catalogue
+  feedback-db:
+    image: mongo:7
+    ports:
+      - '27017:27017'
+  # Сервисы
+  config-server:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      args:
+        JAR_FILE: config-server/target/config-server-24.1.1-SNAPSHOT-exec.jar
+      tags:
+        - localhost:5000/selmag/config-server:24.1.1
+    environment:
+      SPRING_PROFILES_ACTIVE: native
+      SPRING_CLOUD_CONFIG_SERVER_NATIVE_SEARCH_LOCATIONS: file:///config/{application}/{profile}
+      LOKI: http://loki:3100
+    volumes:
+      - './config/cloud:/config'
+    ports:
+      - '8888:8888'
+  eureka-server:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      args:
+        JAR_FILE: eureka-server/target/eureka-server-24.1.1-SNAPSHOT-exec.jar
+      tags:
+        - localhost:5000/selmag/eureka-server:24.1.1
+    environment:
+      SPRING_PROFILES_ACTIVE: cloudconfig
+      LOKI: http://loki:3100
+    ports:
+      - '8761:8761'
+  admin-server:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      args:
+        JAR_FILE: admin-server/target/admin-server-24.1.1-SNAPSHOT-exec.jar
+      tags:
+        - localhost:5000/selmag/admin-server:24.1.1
+    environment:
+      SPRING_PROFILES_ACTIVE: cloudconfig
+      LOKI: http://loki:3100
+    ports:
+      - '8085:8085'
+  catalogue-service:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      args:
+        JAR_FILE: catalogue-service/target/catalogue-service-24.1.1-SNAPSHOT-exec.jar
+      tags:
+        - localhost:5000/selmag/catalogue-service:24.1.1
+    environment:
+      SPRING_PROFILES_ACTIVE: cloudconfig, gateway
+      LOKI: http://loki:3100
+  feedback-service:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      args:
+        JAR_FILE: feedback-service/target/feedback-service-24.1.1-SNAPSHOT-exec.jar
+      tags:
+        - localhost:5000/selmag/feedback-service:24.1.1
+    environment:
+      SPRING_PROFILES_ACTIVE: cloudconfig, gateway
+      LOKI: http://loki:3100
+  customer-app:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      args:
+        JAR_FILE: customer-app/target/customer-app-24.1.1-SNAPSHOT-exec.jar
+      tags:
+        - localhost:5000/selmag/customer-app:24.1.1
+    environment:
+      SPRING_PROFILES_ACTIVE: cloudconfig, gateway
+      LOKI: http://loki:3100
+  manager-app:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      args:
+        JAR_FILE: manager-app/target/manager-app-24.1.1-SNAPSHOT-exec.jar
+      tags:
+        - localhost:5000/selmag/manager-app:24.1.1
+    environment:
+      SPRING_PROFILES_ACTIVE: cloudconfig, gateway
+      LOKI: http://loki:3100
+  api-gateway:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      args:
+        JAR_FILE: api-gateway/target/api-gateway-24.1.1-SNAPSHOT-exec.jar
+      tags:
+        - localhost:5000/selmag/api-gateway:24.1.1
+    environment:
+      SPRING_PROFILES_ACTIVE: cloudconfig
+      LOKI: http://loki:3100
+    ports:
+      - '8086:8086'

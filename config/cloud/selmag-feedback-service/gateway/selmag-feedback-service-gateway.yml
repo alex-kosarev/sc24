@@ -1,0 +1,5 @@
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: feedback-service-swagger-ui-nip.io
+      use-pkce-with-authorization-code-grant: true

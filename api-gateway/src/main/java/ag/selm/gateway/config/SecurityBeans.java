@@ -16,6 +16,7 @@ public class SecurityBeans {
         return http
                 .securityMatcher(new PathPatternParserServerWebExchangeMatcher("/actuator/**"))
                 .authorizeExchange(configurer -> configurer
+                        .pathMatchers("/actuator/health", "/actuator/health/**").permitAll()
                         .pathMatchers("/actuator/**").hasAuthority("SCOPE_metrics"))
                 .oauth2ResourceServer(configurer -> configurer.jwt(Customizer.withDefaults()))
                 .securityContextRepository(NoOpServerSecurityContextRepository.getInstance())

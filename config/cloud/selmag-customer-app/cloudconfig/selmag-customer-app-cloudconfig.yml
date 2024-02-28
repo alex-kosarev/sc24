@@ -60,9 +60,9 @@ management:
       probability: 1.0
 eureka:
   instance:
-    hostname: 172.17.0.1
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 1
+    prefer-ip-address: true
   client:
     registryFetchIntervalSeconds: 1
     service-url:

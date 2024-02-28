@@ -1,0 +1,113 @@
+scrape_configs:
+  - job_name: selmag-admin-service-job
+    static_configs:
+      - targets: ["http://admin-server:8085"]
+        labels:
+          application: selmag-admin-service
+    metrics_path: /actuator/prometheus
+    oauth2:
+      client_id: victoria-metrics
+      client_secret: vTpeB59Sb2Qzh0HI4cXBlewm2ivY0dzD
+      token_url: http://172.17.0.1:8082/realms/selmag/protocol/openid-connect/token
+      scopes:
+        - metrics
+      endpoint_params:
+        grant_type: client_credentials
+  - job_name: selmag-api-gateway-job
+    static_configs:
+      - targets: ["http://api-gateway:8086"]
+        labels:
+          application: selmag-api-gateway
+    metrics_path: /actuator/prometheus
+    oauth2:
+      client_id: victoria-metrics
+      client_secret: vTpeB59Sb2Qzh0HI4cXBlewm2ivY0dzD
+      token_url: http://172.17.0.1:8082/realms/selmag/protocol/openid-connect/token
+      scopes:
+        - metrics
+      endpoint_params:
+        grant_type: client_credentials
+  - job_name: selmag-config-server-job
+    static_configs:
+      - targets: ["http://config-server:8888"]
+        labels:
+          application: selmag-config-server
+    metrics_path: /actuator/prometheus
+    oauth2:
+      client_id: victoria-metrics
+      client_secret: vTpeB59Sb2Qzh0HI4cXBlewm2ivY0dzD
+      token_url: http://172.17.0.1:8082/realms/selmag/protocol/openid-connect/token
+      scopes:
+        - metrics
+      endpoint_params:
+        grant_type: client_credentials
+  - job_name: selmag-eureka-server-job
+    static_configs:
+      - targets: ["http://eureka-server:8761"]
+        labels:
+          application: selmag-eureka-server
+    metrics_path: /actuator/prometheus
+    oauth2:
+      client_id: victoria-metrics
+      client_secret: vTpeB59Sb2Qzh0HI4cXBlewm2ivY0dzD
+      token_url: http://172.17.0.1:8082/realms/selmag/protocol/openid-connect/token
+      scopes:
+        - metrics
+      endpoint_params:
+        grant_type: client_credentials
+  - job_name: selmag-catalogue-service-job
+    static_configs:
+      - targets: ["http://catalogue-service:8081"]
+        labels:
+          application: selmag-catalogue-service
+    metrics_path: /actuator/prometheus
+    oauth2:
+      client_id: victoria-metrics
+      client_secret: vTpeB59Sb2Qzh0HI4cXBlewm2ivY0dzD
+      token_url: http://172.17.0.1:8082/realms/selmag/protocol/openid-connect/token
+      scopes:
+        - metrics
+      endpoint_params:
+        grant_type: client_credentials
+  - job_name: selmag-feedback-service-job
+    static_configs:
+      - targets: ["http://feedback-service:8084"]
+        labels:
+          application: selmag-feedback-service
+    metrics_path: /actuator/prometheus
+    oauth2:
+      client_id: victoria-metrics
+      client_secret: vTpeB59Sb2Qzh0HI4cXBlewm2ivY0dzD
+      token_url: http://172.17.0.1:8082/realms/selmag/protocol/openid-connect/token
+      scopes:
+        - metrics
+      endpoint_params:
+        grant_type: client_credentials
+  - job_name: selmag-customer-app-job
+    static_configs:
+      - targets: ["http://customer-app:8083"]
+        labels:
+          application: selmag-customer-app
+    metrics_path: /actuator/prometheus
+    oauth2:
+      client_id: victoria-metrics
+      client_secret: vTpeB59Sb2Qzh0HI4cXBlewm2ivY0dzD
+      token_url: http://172.17.0.1:8082/realms/selmag/protocol/openid-connect/token
+      scopes:
+        - metrics
+      endpoint_params:
+        grant_type: client_credentials
+  - job_name: selmag-manager-app-job
+    static_configs:
+      - targets: ["http://manager-app:8080"]
+        labels:
+          application: selmag-manager-app
+    metrics_path: /actuator/prometheus
+    oauth2:
+      client_id: victoria-metrics
+      client_secret: vTpeB59Sb2Qzh0HI4cXBlewm2ivY0dzD
+      token_url: http://172.17.0.1:8082/realms/selmag/protocol/openid-connect/token
+      scopes:
+        - metrics
+      endpoint_params:
+        grant_type: client_credentials

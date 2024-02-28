@@ -5,6 +5,7 @@
 - `standalone` - для запуска модулей `admin-server`, `catalogue-service`, `feedback-service`, `customer-app` и `manager-app` без Spring Cloud Eureka, Spring Cloud Config, Docker и Kubernetes.
 - `cloud` - для запуска модулей `admin-server`, `eureka-server`, `catalogue-service`, `feedback-service`, `customer-app` и `manager-app` без Spring Cloud Config, Docker и Kubernetes.
 - `cloudconfig` - для запуска модулей `admin-server`, `eureka-server`, `catalogue-service`, `feedback-service`, `customer-app` и `manager-app` без Docker и Kubernetes.
+- `gateway` - для запуска модулей `catalogue-service`, `feedback-service`, `customer-app` и `manager-app` за API Gateway
 - `native` - для запуска модуля `config-server` с конфигами из локальной директории
 - `git` - для запуска модуля `config-server` с конфигами из git-репозитория
 
@@ -79,3 +80,9 @@ docker run --name selmag-loki -p 3100:3100 grafana/loki:2.9.4
 ```shell
 docker run --name selmag-tracing -p 3200:3200 -p 9095:9095 -p 4317:4317 -p 4318:4318 -p 9411:9411 -p 14268:14268 -v ./config/tempo/tempo.yaml:/etc/tempo.yaml grafana/tempo:2.3.1 -config.file=/etc/tempo.yaml
 ```
+
+## FAQ
+
+### Зачем ip-адрес 172.17.0.1?
+
+Это адрес хост-машины в соединении типа "мост" для Docker: все контейнеры могут обращаться к хост-системе по этому адресу. Если в вашей системе адрес отличается от указанного, то измените его в файлах конфигурации на корректный.
