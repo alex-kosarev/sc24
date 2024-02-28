@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: feedback-db-pv
+  labels:
+    app: feedback-db
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /data/db
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: feedback-db-pvc
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feedback-db
+  labels:
+    app: feedback-db
+spec:
+  selector:
+    matchLabels:
+      app: feedback-db
+  template:
+    metadata:
+      labels:
+        app: feedback-db
+    spec:
+      containers:
+        - name: feedback-db
+          image: mongo:7
+          ports:
+            - containerPort: 27017
+              name: mongodb
+          volumeMounts:
+            - mountPath: /data/db
+              name: mongodb-persistent-storage
+      volumes:
+        - name: mongodb-persistent-storage
+          persistentVolumeClaim:
+            claimName: feedback-db-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: feedback-db-svc
+spec:
+  ports:
+    - port: 27017
+  selector:
+    app: feedback-db
+  clusterIP: None

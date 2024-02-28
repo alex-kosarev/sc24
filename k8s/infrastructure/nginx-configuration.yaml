@@ -1,0 +1,9 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: nginx-configuration
+  namespace: kube-system
+  labels:
+    k8s-app: nginx-ingress-controller
+data:
+  proxy-buffer-size: "16k"

@@ -1,0 +1,123 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tempo-config-cm
+data:
+  tempo.yaml: |
+    stream_over_http_enabled: true
+    server:
+      http_listen_port: 3200
+      log_level: info
+    query_frontend:
+      search:
+        duration_slo: 5s
+        throughput_bytes_slo: 1.073741824e+09
+      trace_by_id:
+        duration_slo: 5s
+    distributor:
+      receivers:
+        jaeger:
+          protocols:
+            thrift_http:
+            grpc:
+            thrift_binary:
+            thrift_compact:
+        zipkin:
+        otlp:
+          protocols:
+            http:
+            grpc:
+        opencensus:
+
+    ingester:
+      max_block_duration: 5m
+    compactor:
+      compaction:
+        block_retention: 1h
+    metrics_generator:
+      registry:
+        external_labels:
+          source: tempo
+          cluster: docker-compose
+      storage:
+        path: /tmp/tempo/generator/wal
+        remote_write:
+          - url: http://vm-svc.selmag.svc.cluster.local:8428/api/v1/write
+            send_exemplars: true
+    storage:
+      trace:
+        backend: local
+        wal:
+          path: /tmp/tempo/wal
+        local:
+          path: /tmp/tempo/blocks
+    overrides:
+      defaults:
+        metrics_generator:
+          processors: [ service-graphs, span-metrics ]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tempo
+  labels:
+    app: tempo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tempo
+  template:
+    metadata:
+      labels:
+        app: tempo
+    spec:
+      volumes:
+        - name: tempo-config
+          configMap:
+            name: tempo-config-cm
+      containers:
+        - name: tempo
+          image: grafana/tempo:2.3.1
+          args:
+            - -config.file=/etc/tempo/tempo.yaml
+          ports:
+            - name: http
+              containerPort: 3200
+            - name: otlp-grpc
+              containerPort: 4317
+            - name: otlp-http
+              containerPort: 4318
+            - name: grpc
+              containerPort: 9095
+            - name: zipkin
+              containerPort: 9411
+            - name: jaeger
+              containerPort: 14268
+          volumeMounts:
+            - mountPath: /etc/tempo
+              name: tempo-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tempo-svc
+  labels:
+    app: tempo
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 3200
+    - name: otlp-grpc
+      port: 4317
+    - name: otlp-http
+      port: 4318
+    - name: grpc
+      port: 9095
+    - name: zipkin
+      port: 9411
+    - name: jaeger
+      port: 14268
+  selector:
+    app: tempo

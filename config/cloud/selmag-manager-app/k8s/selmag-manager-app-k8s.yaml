@@ -1,0 +1,30 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+        registration:
+          keycloak:
+            client-id: manager-app-k8s
+            client-secret: XSjDUQtDKFZfhdloStH8AY1Aphje0Yvm
+          metrics:
+            client-id: manager-app-k8s
+            client-secret: XSjDUQtDKFZfhdloStH8AY1Aphje0Yvm
+          discovery:
+            client-id: manager-app-k8s
+            client-secret: XSjDUQtDKFZfhdloStH8AY1Aphje0Yvm
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://selmag-eureka-server-svc.selmag.svc.cluster.local:8761/eureka/
+management:
+  zipkin:
+    tracing:
+      endpoint: http://tempo-svc.selmag.svc.cluster.local:9411/api/v2/spans

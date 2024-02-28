@@ -1,0 +1,30 @@
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: feedback-service-swagger-ui-k8s
+      use-pkce-with-authorization-code-grant: true
+spring:
+  data:
+    mongodb:
+      uri: mongodb://feedback-db-svc.selmag.svc.cluster.local:27017/feedback
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+keycloak:
+  uri: http://keycloak.selm.ag.192.168.49.2.nip.io
+eureka:
+  client:
+    service-url:
+      defaultZone: http://selmag-eureka-server-svc.selmag.svc.cluster.local:8761/eureka/
+  instance:
+    prefer-ip-address: true
+management:
+  zipkin:
+    tracing:
+      endpoint: http://tempo-svc.selmag.svc.cluster.local:9411/api/v2/spans

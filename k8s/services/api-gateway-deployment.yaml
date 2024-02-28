@@ -1,0 +1,128 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-gateway-vmagent-cm
+data:
+  promscrape.yaml: |
+    scrape_configs:
+      - job_name: selmag_api_gateway
+        static_configs:
+          - targets: ["http://localhost:8080"]
+            labels:
+              application: selmag-api-gateway
+        metrics_path: /actuator/prometheus
+        oauth2:
+          client_id: victoria-metrics
+          client_secret: vTpeB59Sb2Qzh0HI4cXBlewm2ivY0dzD
+          token_url: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag/protocol/openid-connect/token
+          scopes:
+            - metrics
+          endpoint_params:
+            grant_type: client_credentials
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selmag-api-gateway-deployment
+  labels:
+    app: selmag-api-gateway
+spec:
+  selector:
+    matchLabels:
+      app: selmag-api-gateway
+  template:
+    metadata:
+      labels:
+        app: selmag-api-gateway
+    spec:
+      volumes:
+        - name: vmconfig
+          configMap:
+            name: api-gateway-vmagent-cm
+      containers:
+        - name: selmag-api-gateway
+          image: 192.168.49.1:5000/selmag/api-gateway:24.1.1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SERVER_PORT
+              value: "8080"
+            - name: SPRING_PROFILES_ACTIVE
+              value: cloudconfig, k8s
+            - name: SPRING_CLOUD_CONFIG_URI
+              value: http://config:config-password@selmag-config-server-svc.selmag.svc.cluster.local:8888
+            - name: LOKI
+              value: http://loki-svc.selmag.svc.cluster.local:3100
+        - name: vmagent
+          image: victoriametrics/vmagent:v1.93.12
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          args:
+            - -promscrape.config=/etc/opt/vmagent/promscrape.yaml
+            - -remoteWrite.url=http://vm-svc.selmag.svc.cluster.local:8428/api/v1/write
+            - -remoteWrite.label=instance=$(NODE_NAME)
+          volumeMounts:
+            - mountPath: /etc/opt/vmagent
+              name: vmconfig
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: selmag-api-gateway-svc
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      name: http
+  selector:
+    app: selmag-api-gateway
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: selmag-api-gateway-ingress
+spec:
+  rules:
+    - host: manager.selm.ag.192.168.49.2.nip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: selmag-api-gateway-svc
+                port:
+                  name: http
+    - host: customer.selm.ag.192.168.49.2.nip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: selmag-api-gateway-svc
+                port:
+                  name: http
+    - host: catalogue.api.selm.ag.192.168.49.2.nip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: selmag-api-gateway-svc
+                port:
+                  name: http
+    - host: feedback.api.selm.ag.192.168.49.2.nip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: selmag-api-gateway-svc
+                port:
+                  name: http

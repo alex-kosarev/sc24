@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-server-vmagent-cm
+data:
+  promscrape.yaml: |
+    scrape_configs:
+      - job_name: selmag_config_server
+        static_configs:
+          - targets: ["http://localhost:8888"]
+            labels:
+              application: selmag-config-server
+        metrics_path: /actuator/prometheus
+        oauth2:
+          client_id: victoria-metrics
+          client_secret: vTpeB59Sb2Qzh0HI4cXBlewm2ivY0dzD
+          token_url: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag/protocol/openid-connect/token
+          scopes:
+            - metrics
+          endpoint_params:
+            grant_type: client_credentials
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: selmag-config-server-deployment
+  labels:
+    app: selmag-config-server
+spec:
+  selector:
+    matchLabels:
+      app: selmag-config-server
+  template:
+    metadata:
+      labels:
+        app: selmag-config-server
+    spec:
+      volumes:
+        - name: vmconfig
+          configMap:
+            name: config-server-vmagent-cm
+      containers:
+        - name: selmag-config-server
+          imagePullPolicy: Always
+          image: 192.168.49.1:5000/selmag/config-server:24.1.1
+          ports:
+            - containerPort: 8888
+          args:
+            - --logging.level.org.springframework.security=TRACE
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: git, k8s
+            - name: LOKI
+              value: http://loki-svc.selmag.svc.cluster.local:3100
+        - name: vmagent
+          image: victoriametrics/vmagent:v1.93.12
+          env:
+            - name: NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          args:
+            - -promscrape.config=/etc/opt/vmagent/promscrape.yaml
+            - -remoteWrite.url=http://vm-svc.selmag.svc.cluster.local:8428/api/v1/write
+            - -remoteWrite.label=instance=$(NODE_NAME)
+          volumeMounts:
+            - mountPath: /etc/opt/vmagent
+              name: vmconfig
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: selmag-config-server-svc
+spec:
+  type: NodePort
+  ports:
+    - port: 8888
+      name: http
+  selector:
+    app: selmag-config-server

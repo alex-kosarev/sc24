@@ -1,0 +1,35 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: catalogue-service-route
+          uri: lb://selmag-catalogue-service
+          predicates:
+            - Host=catalogue.api.selm.ag.192.168.49.2.nip.io
+        - id: feedback-service-route
+          uri: lb://selmag-feedback-service
+          predicates:
+            - Host=feedback.api.selm.ag.192.168.49.2.nip.io
+        - id: manager-app-route
+          uri: lb://selmag-manager-app
+          predicates:
+            - Host=manager.selm.ag.192.168.49.2.nip.io
+        - id: customer-app-route
+          uri: lb://selmag-customer-app
+          predicates:
+            - Host=customer.selm.ag.192.168.49.2.nip.io
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://selmag-eureka-server-svc.selmag.svc.cluster.local:8761/eureka/

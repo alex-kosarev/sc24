@@ -40,7 +40,7 @@ metrics_generator:
   storage:
     path: /tmp/tempo/generator/wal
     remote_write:
-      - url: http://172.17.0.1:8428/api/v1/write
+      - url: http://victoria-metrics:8428/api/v1/write
         send_exemplars: true
 
 storage:

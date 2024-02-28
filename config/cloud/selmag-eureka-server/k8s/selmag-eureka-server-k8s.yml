@@ -1,0 +1,18 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://selmag-eureka-server-svc.selmag.svc.cluster.local:8761/eureka/
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+        registration:
+          keycloak:
+            client-id: eureka-server-k8s
+            client-secret: pjYxpWfusjpQ05JnSxxVVYHG2jBfYdui
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag

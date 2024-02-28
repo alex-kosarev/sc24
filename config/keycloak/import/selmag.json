@@ -92,6 +92,19 @@
       "attributes" : { }
     } ],
     "client" : {
+      "feedback-service-swagger-ui-nip-io" : [ ],
+      "manager-app" : [ ],
+      "security-admin-console" : [ ],
+      "eureka-server-nip-io" : [ ],
+      "account-console" : [ ],
+      "feedback-service" : [ ],
+      "eureka-server" : [ ],
+      "victoria-metrics" : [ ],
+      "admin-service-k8s" : [ ],
+      "manager-app-nip-io" : [ ],
+      "admin-cli" : [ ],
+      "catalogue-service-swagger-ui-nip-io" : [ ],
+      "feedback-service-swagger-ui-k8s" : [ ],
       "feedback-service-swagger-ui" : [ ],
       "realm-management" : [ {
         "id" : "f2c6df50-6303-472c-9ca1-884ebc6a5c06",
@@ -261,11 +274,12 @@
         "containerId" : "62cdebb0-92e6-4ac3-a59b-8c43c20b2644",
         "attributes" : { }
       } ],
-      "manager-app" : [ ],
-      "security-admin-console" : [ ],
+      "admin-service-nip-io" : [ ],
+      "customer-app-nip-io" : [ ],
+      "manager-app-k8s" : [ ],
       "catalogue-service-swagger-ui" : [ ],
+      "catalogue-service-swagger-ui-k8s" : [ ],
       "customer-app" : [ ],
-      "account-console" : [ ],
       "broker" : [ {
         "id" : "c6bc6617-0df3-4448-8870-9785c4b40145",
         "name" : "read-token",
@@ -275,12 +289,10 @@
         "containerId" : "364ff77a-5c6d-43c0-bd43-7f247b171e4e",
         "attributes" : { }
       } ],
-      "feedback-service" : [ ],
-      "eureka-server" : [ ],
-      "victoria-metrics" : [ ],
+      "customer-app-k8s" : [ ],
       "catalogue-service" : [ ],
+      "eureka-server-k8s" : [ ],
       "api-gateway" : [ ],
-      "admin-cli" : [ ],
       "account" : [ {
         "id" : "f08b0e76-f139-4758-8c0d-b2de5efe35ba",
         "name" : "view-applications",
@@ -477,6 +489,34 @@
     "notBefore" : 0,
     "groups" : [ ]
   }, {
+    "id" : "abada060-d4db-4054-a7bd-65cc57f96c96",
+    "createdTimestamp" : 1709137344588,
+    "username" : "service-account-admin-service-k8s",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "admin-service-k8s",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-selmag" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "739895b1-c1b2-4d3f-81aa-82828db3111a",
+    "createdTimestamp" : 1709137239733,
+    "username" : "service-account-admin-service-nip-io",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "admin-service-nip-io",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-selmag" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
     "id" : "d11795d5-9dd2-4679-b8a1-48d71b9ce296",
     "createdTimestamp" : 1708934870339,
     "username" : "service-account-api-gateway",
@@ -519,6 +559,34 @@
     "notBefore" : 0,
     "groups" : [ ]
   }, {
+    "id" : "22dcd6cc-92b9-4a53-9dbc-1fe866f34789",
+    "createdTimestamp" : 1709138117337,
+    "username" : "service-account-customer-app-k8s",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "customer-app-k8s",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-selmag" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "0c3ac792-6466-4300-a64b-65929bb1b180",
+    "createdTimestamp" : 1709138063303,
+    "username" : "service-account-customer-app-nip-io",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "customer-app-nip-io",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-selmag" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
     "id" : "006b2e3c-61e4-41f7-8d20-29bef0b95895",
     "createdTimestamp" : 1708081086823,
     "username" : "service-account-feedback-service",
@@ -540,6 +608,34 @@
     "totp" : false,
     "emailVerified" : false,
     "serviceAccountClientId" : "manager-app",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-selmag" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "84d39180-224e-4b32-8251-2208c5aae97b",
+    "createdTimestamp" : 1709139175293,
+    "username" : "service-account-manager-app-k8s",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "manager-app-k8s",
+    "credentials" : [ ],
+    "disableableCredentialTypes" : [ ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "default-roles-selmag" ],
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "6c464ed5-8695-483f-8e47-83a87b371dab",
+    "createdTimestamp" : 1709139104748,
+    "username" : "service-account-manager-app-nip-io",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "serviceAccountClientId" : "manager-app-nip-io",
     "credentials" : [ ],
     "disableableCredentialTypes" : [ ],
     "requiredActions" : [ ],
@@ -752,7 +848,169 @@
       }
     } ],
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
-    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "discovery", "offline_access", "view_catalogue", "metrics", "microprofile-jwt" ]
+    "optionalClientScopes" : [ "address", "phone", "discovery", "offline_access", "metrics", "microprofile-jwt" ]
+  }, {
+    "id" : "ff3b4858-a0cc-4698-96f0-6eff9eb9fbe3",
+    "clientId" : "admin-service-k8s",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "http://admin.selm.ag.192.168.49.2.nip.io",
+    "adminUrl" : "http://admin.selm.ag.192.168.49.2.nip.io",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "secret" : "rByZmGdBcuu3jiNs3f8TdwkAd9yztO3e",
+    "redirectUris" : [ "/*" ],
+    "webOrigins" : [ ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : true,
+    "publicClient" : false,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "client.secret.creation.time" : "1709137344",
+      "backchannel.logout.session.required" : "true",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "display.on.consent.screen" : "false",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "protocolMappers" : [ {
+      "id" : "e665b5f0-0736-4fca-81f6-0d745ff51eb0",
+      "name" : "Client IP Address",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientAddress",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientAddress",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "66801b45-fc40-471f-a56d-a019b9cd2d09",
+      "name" : "Client Host",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientHost",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientHost",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "6c830379-9377-4651-9f8c-d7fddcf5a899",
+      "name" : "Client ID",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "client_id",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "client_id",
+        "jsonType.label" : "String"
+      }
+    } ],
+    "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
+    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "discovery", "offline_access", "view_catalogue", "metrics_server", "metrics", "microprofile-jwt" ]
+  }, {
+    "id" : "6fda9569-1a88-4c72-b111-2212ffbc1739",
+    "clientId" : "admin-service-nip-io",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "http://admin.selm.ag.172.17.0.1.nip.io:8085",
+    "adminUrl" : "http://admin.selm.ag.172.17.0.1:8085",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "secret" : "ylzJGbO5inaNylwcPj6v5FAKjO7ANAQy",
+    "redirectUris" : [ "/*" ],
+    "webOrigins" : [ ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : true,
+    "publicClient" : false,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "client.secret.creation.time" : "1709137239",
+      "backchannel.logout.session.required" : "true",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "display.on.consent.screen" : "false",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "protocolMappers" : [ {
+      "id" : "58ad0e6d-2aa6-4d68-8583-3945448bedf5",
+      "name" : "Client Host",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientHost",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientHost",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "bd646ae4-3cd0-4e3a-a9f3-223e475816e4",
+      "name" : "Client ID",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "client_id",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "client_id",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "6c7d32c6-cf5c-46dd-b5a4-28765c9fa103",
+      "name" : "Client IP Address",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientAddress",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientAddress",
+        "jsonType.label" : "String"
+      }
+    } ],
+    "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "discovery", "offline_access", "metrics", "microprofile-jwt" ]
   }, {
     "id" : "72f96b6d-be02-4359-8e02-b93fb40d6a82",
     "clientId" : "api-gateway",
@@ -780,9 +1038,10 @@
     "protocol" : "openid-connect",
     "attributes" : {
       "oidc.ciba.grant.enabled" : "false",
-      "oauth2.device.authorization.grant.enabled" : "false",
       "client.secret.creation.time" : "1708934870",
       "backchannel.logout.session.required" : "true",
+      "post.logout.redirect.uris" : "+",
+      "oauth2.device.authorization.grant.enabled" : "false",
       "backchannel.logout.revoke.offline.tokens" : "false"
     },
     "authenticationFlowBindingOverrides" : { },
@@ -797,6 +1056,7 @@
       "config" : {
         "user.session.note" : "clientHost",
         "introspection.token.claim" : "true",
+        "userinfo.token.claim" : "true",
         "id.token.claim" : "true",
         "access.token.claim" : "true",
         "claim.name" : "clientHost",
@@ -811,6 +1071,7 @@
       "config" : {
         "user.session.note" : "client_id",
         "introspection.token.claim" : "true",
+        "userinfo.token.claim" : "true",
         "id.token.claim" : "true",
         "access.token.claim" : "true",
         "claim.name" : "client_id",
@@ -825,6 +1086,7 @@
       "config" : {
         "user.session.note" : "clientAddress",
         "introspection.token.claim" : "true",
+        "userinfo.token.claim" : "true",
         "id.token.claim" : "true",
         "access.token.claim" : "true",
         "claim.name" : "clientAddress",
@@ -832,7 +1094,7 @@
       }
     } ],
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
-    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "discovery", "offline_access", "view_catalogue", "metrics_server", "metrics", "microprofile-jwt" ]
+    "optionalClientScopes" : [ "address", "phone", "discovery", "offline_access", "microprofile-jwt" ]
   }, {
     "id" : "364ff77a-5c6d-43c0-bd43-7f247b171e4e",
     "clientId" : "broker",
@@ -945,21 +1207,21 @@
       }
     } ],
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
-    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "discovery", "offline_access", "view_catalogue", "metrics_server", "metrics", "microprofile-jwt" ]
+    "optionalClientScopes" : [ "address", "phone", "discovery", "offline_access", "metrics_server", "microprofile-jwt" ]
   }, {
     "id" : "38cd61ce-dedf-46de-b7b5-dac2b820df06",
     "clientId" : "catalogue-service-swagger-ui",
     "name" : "",
     "description" : "",
-    "rootUrl" : "http://catalogue.api.selm.ag:8086/swagger-ui",
-    "adminUrl" : "http://catalogue.api.selm.ag:8086/swagger-ui/",
+    "rootUrl" : "http://172.17.0.1:8081/swagger-ui",
+    "adminUrl" : "http://172.17.0.1:8081/swagger-ui/",
     "baseUrl" : "",
     "surrogateAuthRequired" : false,
     "enabled" : true,
     "alwaysDisplayInConsole" : false,
     "clientAuthenticatorType" : "client-secret",
-    "redirectUris" : [ "http://catalogue.api.selm.ag:8086/swagger-ui/*" ],
-    "webOrigins" : [ "http://catalogue.api.selm.ag:8086" ],
+    "redirectUris" : [ "http://172.17.0.1:8081/swagger-ui/*" ],
+    "webOrigins" : [ "http://172.17.0.1:8081" ],
     "notBefore" : 0,
     "bearerOnly" : false,
     "consentRequired" : false,
@@ -984,12 +1246,84 @@
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
     "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "offline_access", "view_catalogue", "microprofile-jwt" ]
   }, {
+    "id" : "81f3c5a7-b9d8-4b0c-90c0-401c5db71db3",
+    "clientId" : "catalogue-service-swagger-ui-k8s",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "http://catalogue.api.selm.ag.192.168.49.2.nip.io/swagger-ui",
+    "adminUrl" : "http://catalogue.api.selm.ag.192.168.49.2.nip.io/swagger-ui",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "redirectUris" : [ "http://catalogue.api.selm.ag.192.168.49.2.nip.io/swagger-ui/*" ],
+    "webOrigins" : [ "http://catalogue.api.selm.ag.192.168.49.2.nip.io" ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : false,
+    "publicClient" : true,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "display.on.consent.screen" : "false",
+      "backchannel.logout.session.required" : "true",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
+    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "offline_access", "view_catalogue", "microprofile-jwt" ]
+  }, {
+    "id" : "6f8d8ea4-0728-48fb-82dc-a945380dba3c",
+    "clientId" : "catalogue-service-swagger-ui-nip-io",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "http://catalogue.api.selm.ag.172.17.0.1.nip.io:8086/swagger-ui",
+    "adminUrl" : "",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "redirectUris" : [ "/*" ],
+    "webOrigins" : [ "http://catalogue.api.selm.ag.172.17.0.1.nip.io:8086" ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : false,
+    "publicClient" : true,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "display.on.consent.screen" : "false",
+      "backchannel.logout.session.required" : "true",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
+    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "offline_access", "view_catalogue", "microprofile-jwt" ]
+  }, {
     "id" : "ce83f995-8fc2-4e3d-810a-cb61da512233",
     "clientId" : "customer-app",
     "name" : "",
     "description" : "",
-    "rootUrl" : "http://customer.selm.ag.172.17.0.1.nip.io:8086",
-    "adminUrl" : "http://customer.selm.ag.172.17.0.1.nip.io:8086",
+    "rootUrl" : "http://172.17.0.1:8083",
+    "adminUrl" : "http://172.17.0.1:8083",
     "baseUrl" : "",
     "surrogateAuthRequired" : false,
     "enabled" : true,
@@ -1012,6 +1346,7 @@
       "oidc.ciba.grant.enabled" : "false",
       "client.secret.creation.time" : "1707816401",
       "backchannel.logout.session.required" : "true",
+      "post.logout.redirect.uris" : "+",
       "oauth2.device.authorization.grant.enabled" : "false",
       "display.on.consent.screen" : "false",
       "backchannel.logout.revoke.offline.tokens" : "false"
@@ -1066,7 +1401,169 @@
       }
     } ],
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
-    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "discovery", "offline_access", "view_catalogue", "metrics_server", "metrics", "microprofile-jwt" ]
+    "optionalClientScopes" : [ "address", "phone", "discovery", "offline_access", "view_catalogue", "metrics_server", "microprofile-jwt" ]
+  }, {
+    "id" : "934cb0d5-061d-4d61-96c9-a51fcb78e0a5",
+    "clientId" : "customer-app-k8s",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "http://customer.selm.ag.192.168.49.2.nip.io",
+    "adminUrl" : "http://customer.selm.ag.192.168.49.2.nip.io",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "secret" : "mkMjkeLWftNO4dCrKRCWHoRXTW5kGXlj",
+    "redirectUris" : [ "/*" ],
+    "webOrigins" : [ ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : true,
+    "publicClient" : false,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "client.secret.creation.time" : "1709138117",
+      "backchannel.logout.session.required" : "true",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "display.on.consent.screen" : "false",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "protocolMappers" : [ {
+      "id" : "9598e67a-6533-43de-9d0b-4f1236baeb58",
+      "name" : "Client ID",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "client_id",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "client_id",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "2dea17fe-9970-4610-876b-a9923412a86b",
+      "name" : "Client IP Address",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientAddress",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientAddress",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "704763cc-e44b-4d1e-bc32-fb58d43e65be",
+      "name" : "Client Host",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientHost",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientHost",
+        "jsonType.label" : "String"
+      }
+    } ],
+    "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "discovery", "offline_access", "metrics_server", "view_catalogue", "microprofile-jwt" ]
+  }, {
+    "id" : "623f9be4-6be1-4dea-a821-c5b78704b7a7",
+    "clientId" : "customer-app-nip-io",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "http://customer.selm.ag.172.17.0.1.nip.io:8086",
+    "adminUrl" : "http://customer.selm.ag.172.17.0.1.nip.io:8086",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "secret" : "UwcFO5kt8q6F9nESuOdQVt0AOJCXboFo",
+    "redirectUris" : [ "/*" ],
+    "webOrigins" : [ ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : true,
+    "publicClient" : false,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "client.secret.creation.time" : "1709138063",
+      "backchannel.logout.session.required" : "true",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "display.on.consent.screen" : "false",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "protocolMappers" : [ {
+      "id" : "fbee1fe4-9a3e-4cb3-9a9a-0742c1727b0a",
+      "name" : "Client Host",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientHost",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientHost",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "846a8016-a319-45f8-a991-69b3447c4efe",
+      "name" : "Client IP Address",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientAddress",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientAddress",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "8ddc6098-1ee5-4532-a797-8314ec87bf07",
+      "name" : "Client ID",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "client_id",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "client_id",
+        "jsonType.label" : "String"
+      }
+    } ],
+    "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "discovery", "offline_access", "metrics_server", "view_catalogue", "microprofile-jwt" ]
   }, {
     "id" : "bce589ae-c5d5-4366-90c4-45a24c533209",
     "clientId" : "eureka-server",
@@ -1104,7 +1601,81 @@
     "fullScopeAllowed" : true,
     "nodeReRegistrationTimeout" : -1,
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
-    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "discovery", "offline_access", "view_catalogue", "metrics_server", "metrics", "microprofile-jwt" ]
+    "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
+  }, {
+    "id" : "a15ce286-343b-44fb-a5af-3c2b232b8ae0",
+    "clientId" : "eureka-server-k8s",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "http://eureka.selm.ag.192.168.49.2.nip.io",
+    "adminUrl" : "http://eureka.selm.ag.192.168.49.2.nip.io",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "secret" : "pjYxpWfusjpQ05JnSxxVVYHG2jBfYdui",
+    "redirectUris" : [ "/*" ],
+    "webOrigins" : [ ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : false,
+    "publicClient" : false,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "client.secret.creation.time" : "1709138639",
+      "backchannel.logout.session.required" : "true",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
+  }, {
+    "id" : "84fae818-6344-4c31-99e7-6cd3a2bf6d73",
+    "clientId" : "eureka-server-nip-io",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "http://eureka.selm.ag.172.17.0.1.nip.io:8761",
+    "adminUrl" : "http://eureka.selm.ag.172.17.0.1.nip.io:8761",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "secret" : "HcIOXjUFYnY3bRmm0Tb1h5l8Vhz9dqki",
+    "redirectUris" : [ "/*" ],
+    "webOrigins" : [ ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : false,
+    "publicClient" : false,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "client.secret.creation.time" : "1709138565",
+      "backchannel.logout.session.required" : "true",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   }, {
     "id" : "2a7fb9d3-c88c-4fdd-8a53-725ee3b25f1d",
     "clientId" : "feedback-service",
@@ -1189,7 +1760,7 @@
       }
     } ],
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
-    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "discovery", "offline_access", "view_catalogue", "metrics_server", "metrics", "microprofile-jwt" ]
+    "optionalClientScopes" : [ "address", "phone", "discovery", "offline_access", "metrics_server", "microprofile-jwt" ]
   }, {
     "id" : "b2034bfb-f45f-49f4-b79f-c10ee4a14c7e",
     "clientId" : "feedback-service-swagger-ui",
@@ -1226,14 +1797,84 @@
     "fullScopeAllowed" : true,
     "nodeReRegistrationTimeout" : -1,
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
-    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "offline_access", "view_catalogue", "microprofile-jwt" ]
+    "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
+  }, {
+    "id" : "ea6d6836-dfed-47ab-8393-a326dae9acb2",
+    "clientId" : "feedback-service-swagger-ui-k8s",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "http://feedback.api.selm.ag.192.168.49.2.nip.io/webjars/swagger-ui",
+    "adminUrl" : "http://feedback.api.selm.ag.192.168.49.2.nip.io/webjars/swagger-ui",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "redirectUris" : [ "http://feedback.api.selm.ag.192.168.49.2.nip.io/webjars/swagger-ui/*" ],
+    "webOrigins" : [ "http://feedback.api.selm.ag.192.168.49.2.nip.io" ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : false,
+    "publicClient" : true,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "backchannel.logout.session.required" : "true",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
+  }, {
+    "id" : "e72f1369-80ef-4cca-830d-ea94fe83244c",
+    "clientId" : "feedback-service-swagger-ui-nip-io",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "http://feedback.api.selm.ag.172.17.0.1.nip.io:8086/webjars/swagger-ui",
+    "adminUrl" : "http://feedback.api.selm.ag.172.17.0.1.nip.io:8086/webjars/swagger-ui",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "redirectUris" : [ "http://feedback.api.selm.ag.172.17.0.1.nip.io:8086/webjars/swagger-ui/*" ],
+    "webOrigins" : [ "http://feedback.api.selm.ag.172.17.0.1.nip.io:8086" ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : false,
+    "publicClient" : true,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "backchannel.logout.session.required" : "true",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
+    "optionalClientScopes" : [ "address", "phone", "offline_access", "microprofile-jwt" ]
   }, {
     "id" : "fb7be8db-cc4c-4a5b-88b5-04e36434a719",
     "clientId" : "manager-app",
     "name" : "",
     "description" : "",
-    "rootUrl" : "http://manager.selm.ag.172.17.0.1.nip.io:8086",
-    "adminUrl" : "http://manager.selm.ag.172.17.0.1.nip.io:8086",
+    "rootUrl" : "http://172.17.0.1:8080",
+    "adminUrl" : "http://172.17.0.1:8080",
     "baseUrl" : "",
     "surrogateAuthRequired" : false,
     "enabled" : true,
@@ -1241,7 +1882,7 @@
     "clientAuthenticatorType" : "client-secret",
     "secret" : "JwByKV4Y8m95GDYTNqJH6jfaj5dXpv8F",
     "redirectUris" : [ "/*" ],
-    "webOrigins" : [ "http://manager.selm.ag.172.17.0.1.nip.io:8086" ],
+    "webOrigins" : [ "http://172.17.0.1:8080" ],
     "notBefore" : 0,
     "bearerOnly" : false,
     "consentRequired" : false,
@@ -1256,6 +1897,7 @@
       "oidc.ciba.grant.enabled" : "false",
       "client.secret.creation.time" : "1706872120",
       "backchannel.logout.session.required" : "true",
+      "post.logout.redirect.uris" : "+",
       "oauth2.device.authorization.grant.enabled" : "false",
       "display.on.consent.screen" : "false",
       "backchannel.logout.revoke.offline.tokens" : "false"
@@ -1310,7 +1952,167 @@
       }
     } ],
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
-    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "discovery", "offline_access", "view_catalogue", "metrics_server", "metrics", "microprofile-jwt" ]
+    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "discovery", "offline_access", "view_catalogue", "metrics_server", "microprofile-jwt" ]
+  }, {
+    "id" : "05b9687b-0ed1-4678-87ad-60ce47bd92d6",
+    "clientId" : "manager-app-k8s",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "http://manager.selm.ag.192.168.49.2.nip.io",
+    "adminUrl" : "http://manager.selm.ag.192.168.49.2.nip.io",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "secret" : "XSjDUQtDKFZfhdloStH8AY1Aphje0Yvm",
+    "redirectUris" : [ "/*" ],
+    "webOrigins" : [ ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : true,
+    "publicClient" : false,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "client.secret.creation.time" : "1709139175",
+      "backchannel.logout.session.required" : "true",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "protocolMappers" : [ {
+      "id" : "dcc38786-7dfd-4f1d-9695-dc100f97c183",
+      "name" : "Client Host",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientHost",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientHost",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "a9fd3455-2c44-468d-b007-bd86a417e1e2",
+      "name" : "Client IP Address",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientAddress",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientAddress",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "e16c1001-714d-4e68-9322-c6f0c87193d8",
+      "name" : "Client ID",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "client_id",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "client_id",
+        "jsonType.label" : "String"
+      }
+    } ],
+    "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
+    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "discovery", "offline_access", "view_catalogue", "metrics_server", "microprofile-jwt" ]
+  }, {
+    "id" : "ad049900-37a9-49c7-98e1-d3ac9d121c32",
+    "clientId" : "manager-app-nip-io",
+    "name" : "",
+    "description" : "",
+    "rootUrl" : "http://manager.selm.ag.172.17.0.1.nip.io:8086",
+    "adminUrl" : "http://manager.selm.ag.172.17.0.1.nip.io:8086",
+    "baseUrl" : "",
+    "surrogateAuthRequired" : false,
+    "enabled" : true,
+    "alwaysDisplayInConsole" : false,
+    "clientAuthenticatorType" : "client-secret",
+    "secret" : "H6EGA7EBc1ve0KMIt4rIgUnZdO5CCNEb",
+    "redirectUris" : [ "/*" ],
+    "webOrigins" : [ ],
+    "notBefore" : 0,
+    "bearerOnly" : false,
+    "consentRequired" : false,
+    "standardFlowEnabled" : true,
+    "implicitFlowEnabled" : false,
+    "directAccessGrantsEnabled" : false,
+    "serviceAccountsEnabled" : true,
+    "publicClient" : false,
+    "frontchannelLogout" : true,
+    "protocol" : "openid-connect",
+    "attributes" : {
+      "oidc.ciba.grant.enabled" : "false",
+      "oauth2.device.authorization.grant.enabled" : "false",
+      "client.secret.creation.time" : "1709139104",
+      "backchannel.logout.session.required" : "true",
+      "backchannel.logout.revoke.offline.tokens" : "false"
+    },
+    "authenticationFlowBindingOverrides" : { },
+    "fullScopeAllowed" : true,
+    "nodeReRegistrationTimeout" : -1,
+    "protocolMappers" : [ {
+      "id" : "2d4c5747-6ea0-486d-b807-402589c9d8dc",
+      "name" : "Client ID",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "client_id",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "client_id",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "2af25f68-7753-426a-8333-da8647d07e4b",
+      "name" : "Client Host",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientHost",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientHost",
+        "jsonType.label" : "String"
+      }
+    }, {
+      "id" : "e2b3a0f6-59f2-4554-9536-55c9e3d71252",
+      "name" : "Client IP Address",
+      "protocol" : "openid-connect",
+      "protocolMapper" : "oidc-usersessionmodel-note-mapper",
+      "consentRequired" : false,
+      "config" : {
+        "user.session.note" : "clientAddress",
+        "introspection.token.claim" : "true",
+        "id.token.claim" : "true",
+        "access.token.claim" : "true",
+        "claim.name" : "clientAddress",
+        "jsonType.label" : "String"
+      }
+    } ],
+    "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
+    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "discovery", "offline_access", "view_catalogue", "metrics_server", "microprofile-jwt" ]
   }, {
     "id" : "62cdebb0-92e6-4ac3-a59b-8c43c20b2644",
     "clientId" : "realm-management",
@@ -1469,7 +2271,7 @@
       }
     } ],
     "defaultClientScopes" : [ "web-origins", "acr", "profile", "roles", "email" ],
-    "optionalClientScopes" : [ "edit_catalogue", "address", "phone", "offline_access", "view_catalogue", "metrics_server", "metrics", "microprofile-jwt" ]
+    "optionalClientScopes" : [ "address", "phone", "offline_access", "metrics", "microprofile-jwt" ]
   } ],
   "clientScopes" : [ {
     "id" : "7ee68466-6e62-4d39-80de-3920233c7a49",
@@ -2047,7 +2849,7 @@
       "subType" : "authenticated",
       "subComponents" : { },
       "config" : {
-        "allowed-protocol-mapper-types" : [ "oidc-address-mapper", "oidc-usermodel-attribute-mapper", "saml-user-attribute-mapper", "oidc-sha256-pairwise-sub-mapper", "saml-user-property-mapper", "oidc-usermodel-property-mapper", "saml-role-list-mapper", "oidc-full-name-mapper" ]
+        "allowed-protocol-mapper-types" : [ "oidc-address-mapper", "oidc-full-name-mapper", "oidc-sha256-pairwise-sub-mapper", "oidc-usermodel-attribute-mapper", "saml-user-attribute-mapper", "saml-role-list-mapper", "saml-user-property-mapper", "oidc-usermodel-property-mapper" ]
       }
     }, {
       "id" : "03bf9f05-0e39-47e4-a4bc-8652b3d44204",
@@ -2091,7 +2893,7 @@
       "subType" : "anonymous",
       "subComponents" : { },
       "config" : {
-        "allowed-protocol-mapper-types" : [ "oidc-sha256-pairwise-sub-mapper", "saml-role-list-mapper", "oidc-usermodel-attribute-mapper", "saml-user-attribute-mapper", "saml-user-property-mapper", "oidc-usermodel-property-mapper", "oidc-address-mapper", "oidc-full-name-mapper" ]
+        "allowed-protocol-mapper-types" : [ "saml-user-attribute-mapper", "oidc-address-mapper", "oidc-full-name-mapper", "oidc-usermodel-attribute-mapper", "oidc-sha256-pairwise-sub-mapper", "saml-role-list-mapper", "saml-user-property-mapper", "oidc-usermodel-property-mapper" ]
       }
     }, {
       "id" : "80459e13-8deb-4a02-9b0a-cf19be4d220d",

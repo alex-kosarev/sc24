@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: victoria-metrics
+  labels:
+    app: victoria-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: victoria-metrics
+  template:
+    metadata:
+      labels:
+        app: victoria-metrics
+    spec:
+      containers:
+        - name: victoria-metrics
+          image: victoriametrics/victoria-metrics:v1.93.10
+          args: ["-httpListenAddr=0.0.0.0:8428"]
+          ports:
+            - name: http
+              containerPort: 8428
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vm-svc
+  labels:
+    app: victoria-metrics
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8428
+  selector:
+    app: victoria-metrics
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: victoria-metrics-ingress
+spec:
+  rules:
+    - host: metrics.selm.ag.192.168.49.2.nip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: vm-svc
+                port:
+                  number: 8428
