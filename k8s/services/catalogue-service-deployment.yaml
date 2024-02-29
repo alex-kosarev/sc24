@@ -39,20 +39,24 @@ spec:
         - name: vmconfig
           configMap:
             name: catalogue-vmagent-cm
+        - name: service-config
+          configMap:
+            name: catalogue-service-config
       containers:
         - name: selmag-catalogue-service
           image: 192.168.49.1:5000/selmag/catalogue-service:24.1.1
+          args:
+            - --spring.config.import=/etc/opt/catalogue-service/application-k8s.yml
           ports:
             - containerPort: 8080
           env:
-            - name: SERVER_PORT
-              value: "8080"
             - name: SPRING_PROFILES_ACTIVE
-              value: cloudconfig, k8s
-            - name: SPRING_CLOUD_CONFIG_URI
-              value: http://config:config-password@selmag-config-server-svc.selmag.svc.cluster.local:8888
+              value: k8s
             - name: LOKI
               value: http://loki-svc.selmag.svc.cluster.local:3100
+          volumeMounts:
+            - mountPath: /etc/opt/catalogue-service
+              name: service-config
         - name: vmagent
           image: victoriametrics/vmagent:v1.93.12
           env:
@@ -67,3 +71,32 @@ spec:
           volumeMounts:
             - mountPath: /etc/opt/vmagent
               name: vmconfig
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: selmag-catalogue-service-svc
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      name: http
+  selector:
+    app: selmag-catalogue-service
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: selmag-catalogue-service-ingress
+spec:
+  rules:
+    - host: catalogue.api.selm.ag.192.168.49.2.nip.io
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: selmag-catalogue-service-svc
+                port:
+                  name: http

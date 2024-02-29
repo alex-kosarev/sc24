@@ -1,0 +1,78 @@
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: catalogue-service-swagger-ui
+      use-pkce-with-authorization-code-grant: true
+keycloak:
+  uri: http://keycloak.selm.ag.192.168.49.2.nip.io
+management:
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  zipkin:
+    tracing:
+      endpoint: http://tempo-svc.selmag.svc.cluster.local:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+eureka:
+  client:
+    enabled: false
+server:
+  forward-headers-strategy: framework
+  port: 8080
+spring:
+  application:
+    name: selmag-catalogue-service
+  boot:
+    admin:
+      client:
+        enabled: true
+        instance:
+          service-host-type: ip
+        url: http://selmag-admin-server-svc.selmag.svc.cluster.local:8080
+  cloud:
+    config:
+      enabled: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+      client:
+        registration:
+          keycloak:
+            client-id: catalogue-service
+            client-secret: LWRWGTNOni7xr9oIh52Wt6bS9jRcQy6Q
+            authorization-grant-type: client_credentials
+            scope:
+              - metrics_server
+          discovery:
+            provider: keycloak
+            client-id: catalogue-service
+            client-secret: LWRWGTNOni7xr9oIh52Wt6bS9jRcQy6Q
+            authorization-grant-type: client_credentials
+            scope:
+              - discovery
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+  datasource:
+    url: jdbc:postgresql://catalogue-db-svc.selmag.svc.cluster.local:5432/catalogue
+    username: catalogue
+    password: catalogue
+  flyway:
+    schemas:
+      - public
+      - catalogue
+  jpa:
+    show-sql: true
+logging:
+  level:
+    sql: info

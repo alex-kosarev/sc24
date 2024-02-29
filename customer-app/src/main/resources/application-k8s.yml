@@ -1,0 +1,69 @@
+selmag:
+  services:
+    catalogue:
+      uri: http://selmag-catalogue-service-svc.selmag.svc.cluster.local:8080
+    feedback:
+      uri: http://selmag-feedback-service-svc.selmag.svc.cluster.local:8080
+spring:
+  boot:
+    admin:
+      client:
+        url: http://selmag-admin-server-svc.selmag.svc.cluster.local:8080
+        instance:
+          service-host-type: ip
+        enabled: true
+  cloud:
+    config:
+      enabled: false
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            client-id: customer-app-k8s
+            client-secret: mkMjkeLWftNO4dCrKRCWHoRXTW5kGXlj
+            client-name: Selmag Keycloak
+            authorization-grant-type: authorization_code
+            scope:
+              - openid
+              - view_catalogue
+          metrics:
+            provider: keycloak
+            client-id: customer-app-k8s
+            client-secret: mkMjkeLWftNO4dCrKRCWHoRXTW5kGXlj
+            authorization-grant-type: client_credentials
+            scope:
+              - metrics_server
+          discovery:
+            provider: keycloak
+            client-id: customer-app-k8s
+            client-secret: mkMjkeLWftNO4dCrKRCWHoRXTW5kGXlj
+            authorization-grant-type: client_credentials
+            scope:
+              - discovery
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+management:
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  zipkin:
+    tracing:
+      endpoint: http://tempo-svc.selmag.svc.cluster.local:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+eureka:
+  client:
+    enabled: false

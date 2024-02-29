@@ -1,0 +1,68 @@
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: feedback-service-swagger-ui
+      use-pkce-with-authorization-code-grant: true
+keycloak:
+  uri: http://keycloak.selm.ag.192.168.49.2.nip.io
+management:
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  zipkin:
+    tracing:
+      endpoint: http://tempo-svc.selmag.svc.cluster.local:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
+eureka:
+  client:
+    enabled: false
+server:
+  forward-headers-strategy: framework
+  port: 8080
+spring:
+  application:
+    name: selmag-feedback-service
+  boot:
+    admin:
+      client:
+        enabled: true
+        instance:
+          service-host-type: ip
+        url: http://selmag-admin-server-svc.selmag.svc.cluster.local:8080
+  cloud:
+    config:
+      enabled: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+      client:
+        registration:
+          keycloak:
+            client-id: feedback-service
+            client-secret: 4cD79sTpV318BqiIWWUYsfjywdzg4DeK
+            authorization-grant-type: client_credentials
+            scope:
+              - metrics_server
+          discovery:
+            provider: keycloak
+            client-id: feedback-service
+            client-secret: 4cD79sTpV318BqiIWWUYsfjywdzg4DeK
+            authorization-grant-type: client_credentials
+            scope:
+              - discovery
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+  data:
+    mongodb:
+      uri: mongodb://feedback-db-svc.selmag.svc.cluster.local:27017/feedback

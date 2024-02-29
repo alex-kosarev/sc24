@@ -39,20 +39,24 @@ spec:
         - name: vmconfig
           configMap:
             name: admin-vmagent-cm
+        - name: service-config
+          configMap:
+            name: admin-server-config
       containers:
         - name: selmag-admin-server
           image: 192.168.49.1:5000/selmag/admin-server:24.1.1
+          args:
+            - --spring.config.import=/etc/opt/admin-server/application-k8s.yml
           ports:
             - containerPort: 8080
           env:
-            - name: SERVER_PORT
-              value: "8080"
             - name: SPRING_PROFILES_ACTIVE
-              value: cloudconfig,k8s
-            - name: SPRING_CLOUD_CONFIG_URI
-              value: http://config:config-password@selmag-config-server-svc.selmag.svc.cluster.local:8888
+              value: k8s
             - name: LOKI
               value: http://loki-svc.selmag.svc.cluster.local:3100
+          volumeMounts:
+            - mountPath: /etc/opt/admin-server
+              name: service-config
         - name: vmagent
           image: victoriametrics/vmagent:v1.93.12
           env:
