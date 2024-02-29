@@ -1,0 +1,15 @@
+scrape_configs:
+  - job_name: selmag_manager_app
+    static_configs:
+      - targets: ["http://localhost:8080"]
+        labels:
+          application: selmag-manager-app
+    metrics_path: /actuator/prometheus
+    oauth2:
+      client_id: victoria-metrics
+      client_secret: vTpeB59Sb2Qzh0HI4cXBlewm2ivY0dzD
+      token_url: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag/protocol/openid-connect/token
+      scopes:
+        - metrics
+      endpoint_params:
+        grant_type: client_credentials

@@ -1,0 +1,7 @@
+image: 192.168.49.1:5000/selmag/admin-server:24.1.1
+vmagent:
+  image: victoriametrics/vmagent:v1.93.12
+  remoteWrite:
+    url: http://vm-svc.selmag.svc.cluster.local:8428/api/v1/write
+ingress:
+  host: admin.selm.ag.192.168.49.2.nip.io

@@ -1,0 +1,49 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: selmag-admin-server
+  cloud:
+    config:
+      enabled: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak.selm.ag.192.168.49.2.nip.io/realms/selmag
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            authorization-grant-type: client_credentials
+            scope:
+              - metrics
+            client-id: admin-service-k8s
+            client-secret: rByZmGdBcuu3jiNs3f8TdwkAd9yztO3e
+          login:
+            provider: keycloak
+            scope:
+              - metrics
+              - openid
+            client-id: admin-service-k8s
+            client-secret: rByZmGdBcuu3jiNs3f8TdwkAd9yztO3e
+          discovery:
+            provider: keycloak
+            client-id: admin-service-k8s
+            client-secret: rByZmGdBcuu3jiNs3f8TdwkAd9yztO3e
+            authorization-grant-type: client_credentials
+            scope:
+              - discovery
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - health
+          - prometheus
+eureka:
+  client:
+    enabled: false
